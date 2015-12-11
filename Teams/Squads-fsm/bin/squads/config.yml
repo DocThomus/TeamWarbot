@@ -1,0 +1,13 @@
+Name: Squads
+IconPath: Squads.png
+SoundPath: 
+Description: |
+    Création de petites esquades polyvalentes pour sécuriser des points clés.
+BrainsPackage: squads
+AgentsBrainClasses:
+    WarBase: WarBaseBrainController
+    WarExplorer: WarExplorerBrainController
+    WarRocketLauncher: WarRocketLauncherBrainController
+    WarKamikaze: WarKamikazeBrainController
+    WarEngineer: WarEngineerBrainController
+    WarTurret: WarTurretBrainController
