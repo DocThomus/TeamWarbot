@@ -1,32 +1,23 @@
 package squads.explorer;
 
-//import java.util.ArrayList;
-
+import squads.WarExplorerBrainController;
 import squads.fsm.Fsm;
 
 import edu.warbot.agents.actions.constants.ControllableActions;
 import edu.warbot.agents.agents.WarExplorer;
 import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.agents.percepts.WarAgentPercept;
-//import edu.warbot.agents.percepts.WarAgentPercept;
-import edu.warbot.brains.brains.WarExplorerBrain;
-//import edu.warbot.communications.WarMessage;
 import edu.warbot.communications.WarMessage;
 
 public class ExplorerStateCollectorBringBack extends ExplorerState
 {
-	public ExplorerStateCollectorBringBack(Fsm fsm, WarExplorerBrain web)
+	public ExplorerStateCollectorBringBack(Fsm fsm, WarExplorerBrainController web)
 	{
 		super(fsm, web);
 	}
 	
 	public String execute()
 	{
-		reflexe();
-		if(!fsm.getCurrentState().getClass().toString().equals(this.getClass().toString()))
-		{
-			return fsm.execute();
-		}
 		if((bases != null) && (bases.size() > 0))
 		{
 			web.setDebugString("Giving foods to base");
@@ -53,7 +44,7 @@ public class ExplorerStateCollectorBringBack extends ExplorerState
 		{
 			web.setDebugString("Bringing back foods to base");
 			web.broadcastMessageToAgentType(WarAgentType.WarBase, "WhereAreYou","");
-			for(WarMessage message : boiteAuxLettres)
+			for(WarMessage message : web.mailbox)
 			{
 				if(message.getSenderType() == WarAgentType.WarBase)
 				{
@@ -66,11 +57,19 @@ public class ExplorerStateCollectorBringBack extends ExplorerState
 	
 	public void reflexe()
 	{
+		update();
 		super.reflexe();
 		if(web.isBagEmpty())
 		{
 			web.setHeading((web.getHeading()+180) / 360);
 			fsm.push(new ExplorerStateCollectorSearchAndTakeFoods(fsm, web));
+			fsm.reflexe();
+			return;
 		}
+	}
+	
+	public void update()
+	{
+		super.update();
 	}
 }

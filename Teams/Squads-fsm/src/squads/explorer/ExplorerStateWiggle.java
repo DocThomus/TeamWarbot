@@ -1,12 +1,12 @@
 package squads.explorer;
 
+import squads.WarExplorerBrainController;
 import squads.fsm.Fsm;
 import edu.warbot.agents.agents.WarExplorer;
-import edu.warbot.brains.brains.WarExplorerBrain;
 
 public class ExplorerStateWiggle extends ExplorerState
 {
-	public ExplorerStateWiggle(Fsm fsm, WarExplorerBrain web)
+	public ExplorerStateWiggle(Fsm fsm, WarExplorerBrainController web)
 	{
 		super(fsm, web);
 	}
@@ -14,7 +14,7 @@ public class ExplorerStateWiggle extends ExplorerState
 	@Override
 	public String execute()
 	{
-		web.setRandomHeading(5);
+		web.setRandomHeading(2);
 		fsm.pop();
 		return WarExplorer.ACTION_MOVE;
 	}
@@ -24,5 +24,4 @@ public class ExplorerStateWiggle extends ExplorerState
 	{
 		super.reflexe();
 	}
-
 }

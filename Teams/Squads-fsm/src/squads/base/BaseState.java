@@ -15,7 +15,7 @@ public class BaseState extends State
 	
 	public BaseState(Fsm fsm, WarBaseBrain wbb)
 	{
-		super(fsm);
+		super(fsm, wbb);
 		this.wbb = wbb;
 	}
 	
@@ -41,5 +41,8 @@ public class BaseState extends State
 		
 	}
 
-	
+	public void update()
+	{
+		
+	}
 }

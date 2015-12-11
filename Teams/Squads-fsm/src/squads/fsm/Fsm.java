@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Fsm
 {
-	ArrayList<State> stack;
+	public ArrayList<State> stack;
 	
 	public Fsm()
 	{
@@ -25,6 +25,11 @@ public class Fsm
 	{
 		stack.get(stack.size()-1).reflexe();
 		return stack.get(stack.size()-1).execute();
+	}
+	
+	public void reflexe()
+	{
+		stack.get(stack.size()-1).reflexe();
 	}
 	
 	public State getCurrentState()

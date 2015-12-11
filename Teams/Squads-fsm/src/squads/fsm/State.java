@@ -15,4 +15,5 @@ public abstract class State
 	
 	public abstract String execute();
 	public abstract void reflexe();
+	public abstract void update();
 }

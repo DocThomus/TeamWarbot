@@ -1,46 +1,29 @@
 package squads.explorer;
 
-//import edu.warbot.agents.agents.WarExplorer;
-//import edu.warbot.brains.WarBrain;
 import java.util.ArrayList;
 
+import squads.WarExplorerBrainController;
 import squads.fsm.Fsm;
-import squads.fsm.State;
+import squads.fsm.MovableAgentState;
 
 import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.agents.percepts.WarAgentPercept;
-import edu.warbot.brains.brains.WarExplorerBrain;
-import edu.warbot.communications.WarMessage;
 
-public abstract class ExplorerState extends State
+public abstract class ExplorerState extends MovableAgentState
 {
-	public WarExplorerBrain web;
-	ArrayList<WarMessage> boiteAuxLettres;
-	ArrayList<WarAgentPercept> bases;
-	ArrayList<WarAgentPercept> foods;
+	public WarExplorerBrainController web;
 	
-	public ExplorerState(Fsm fsm, WarExplorerBrain web)
+	ArrayList<WarAgentPercept> bases;
+	
+	public ExplorerState(Fsm fsm, WarExplorerBrainController web)
 	{
-		super(fsm);
+		super(fsm, web);
 		this.web = web;
 	}
 	
-	public void reflexe()
+	// Mettre traitement commun à tous les explorer
+	public void update()
 	{
-		boiteAuxLettres = new ArrayList<WarMessage>(web.getMessages());
-		ArrayList<WarAgentPercept> percepts = new ArrayList<WarAgentPercept>(web.getPercepts());
-		foods = new ArrayList<WarAgentPercept>();
-		for(WarAgentPercept p : percepts)
-		{
-			if(p.getType() == WarAgentType.WarFood)
-			{
-				foods.add(p);
-			}
-		}
 		bases = new ArrayList<WarAgentPercept>(web.getPerceptsAlliesByType(WarAgentType.WarBase));
-		if(web.isBlocked())
-		{
-			web.setRandomHeading();
-		}
 	}
 }
