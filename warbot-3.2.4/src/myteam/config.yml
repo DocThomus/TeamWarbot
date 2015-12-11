@@ -1,0 +1,13 @@
+Name: MyTeam
+IconPath: MyTeam.png
+SoundPath: MyTeam.wav
+Description: |
+    Descriptions de mon équipe
+BrainsPackage: myteam
+AgentsBrainClasses:
+    WarBase: WarBaseBrainController
+    WarExplorer: WarExplorerBrainController
+    WarRocketLauncher: WarRocketLauncherBrainController
+    WarKamikaze: WarKamikazeBrainController
+    WarEngineer: WarEngineerBrainController
+    WarTurret: WarTurretBrainController
