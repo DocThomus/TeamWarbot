@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="/auto_home/tbonnin/Documents/Cours M1/POA/Warbot/warbot-3.2.4/teams/Squads.jar"/>
+    <jar path="/auto_home/tbonnin/Documents/Cours M1/POA/Warbot/Warbot/teams/Squads.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/Squads/compile-team.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>

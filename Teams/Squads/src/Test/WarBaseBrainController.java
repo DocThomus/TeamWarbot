@@ -12,32 +12,30 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public abstract class WarBaseBrainController extends WarBaseBrain 
-{    
-	private boolean newBorn;
-	
+{
+
     public WarBaseBrainController() 
     {
         super();
-        this.newBorn = true;
     }
 
     @Override
     public String action() 
     {
-        String idMessagesRecus = "";
-
-        this.broadcastMessageToAgentType(WarAgentType.WarBase, "test", "");
-
-        List<WarMessage> boiteAuxLettres = getMessages();
-
-        for (WarMessage message : boiteAuxLettres) {
-            if(message.getMessage().equals("test")) {
-                idMessagesRecus += message.getSenderID() + ";";
-            }
-        }
-
-        this.setDebugString("" + idMessagesRecus);
-
+    	String idMessagesRecus = "";
+    	
+    	this.broadcastMessageToAgentType(WarAgentType.WarBase, "test", "");
+    	
+    	List<WarMessage> boiteAuxLettres = getMessages();
+    	
+    	for (WarMessage message : boiteAuxLettres) {
+    		if(message.getMessage() == "test") {
+    			idMessagesRecus += message.getSenderID() + ";";
+    		}
+    	}
+    	
+    	this.setDebugString("" + idMessagesRecus);
+    	
         return WarBase.ACTION_IDLE;
     }
 

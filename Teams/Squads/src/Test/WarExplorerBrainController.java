@@ -2,7 +2,6 @@ package Squads;
 
 import java.util.List;
 
-import Util.Util;
 import edu.warbot.agents.agents.WarExplorer;
 import edu.warbot.agents.enums.WarAgentType;
 //import edu.warbot.agents.enums.WarAgentType;
@@ -48,7 +47,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
 					break;			
 			}
 		}
-				
+		
 		// Nourriture en vue.
 		WarAgentPercept food = Util.lePlusProche(getPerceptsResources());
 		if (food != null) {
