@@ -6,15 +6,15 @@ import edu.warbot.agents.agents.WarExplorer;
 
 public class ExplorerStateWiggle extends ExplorerState
 {
-	public ExplorerStateWiggle(Fsm fsm, WarExplorerBrainController web)
+	public ExplorerStateWiggle(Fsm fsm, WarExplorerBrainController webc)
 	{
-		super(fsm, web);
+		super(fsm, webc);
 	}
 
 	@Override
 	public String execute()
 	{
-		web.setRandomHeading(2);
+		webc.setRandomHeading(2);
 		fsm.pop();
 		return WarExplorer.ACTION_MOVE;
 	}

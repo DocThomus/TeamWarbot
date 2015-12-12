@@ -1,0 +1,13 @@
+package squads.explorer;
+
+import edu.warbot.brains.brains.WarExplorerBrain;
+import squads.WarExplorerBrainController;
+import squads.fsm.Fsm;
+
+public class ExplorerStateTroll extends ExplorerState
+{
+	public ExplorerStateTroll(Fsm fsm, WarExplorerBrainController webc)
+	{
+		super(fsm, webc);
+	}
+}

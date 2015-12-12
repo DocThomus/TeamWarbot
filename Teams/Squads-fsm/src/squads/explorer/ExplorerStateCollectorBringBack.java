@@ -11,16 +11,16 @@ import edu.warbot.communications.WarMessage;
 
 public class ExplorerStateCollectorBringBack extends ExplorerState
 {
-	public ExplorerStateCollectorBringBack(Fsm fsm, WarExplorerBrainController web)
+	public ExplorerStateCollectorBringBack(Fsm fsm, WarExplorerBrainController webc)
 	{
-		super(fsm, web);
+		super(fsm, webc);
 	}
 	
 	public String execute()
 	{
 		if((bases != null) && (bases.size() > 0))
 		{
-			web.setDebugString("Giving foods to base");
+			webc.setDebugString("Giving foods to base");
 			WarAgentPercept base = bases.get(0);
 			for(WarAgentPercept b : bases)
 			{
@@ -31,24 +31,24 @@ public class ExplorerStateCollectorBringBack extends ExplorerState
 			}
 			if(base.getDistance() <= ControllableActions.MAX_DISTANCE_GIVE)
 			{
-				web.setIdNextAgentToGive(base.getID());
+				webc.setIdNextAgentToGive(base.getID());
 				return WarExplorer.ACTION_GIVE;
 			}
 			else
 			{
-				web.setHeading(base.getAngle());
+				webc.setHeading(base.getAngle());
 				return WarExplorer.ACTION_MOVE;
 			}
 		}
 		else
 		{
-			web.setDebugString("Bringing back foods to base");
-			web.broadcastMessageToAgentType(WarAgentType.WarBase, "WhereAreYou","");
-			for(WarMessage message : web.mailbox)
+			webc.setDebugString("Bringing back foods to base");
+			webc.broadcastMessageToAgentType(WarAgentType.WarBase, "WhereAreYou","");
+			for(WarMessage message : webc.mailbox)
 			{
 				if(message.getSenderType() == WarAgentType.WarBase)
 				{
-					web.setHeading(message.getAngle());
+					webc.setHeading(message.getAngle());
 				}
 			}
 			return WarExplorer.ACTION_MOVE;
@@ -59,10 +59,10 @@ public class ExplorerStateCollectorBringBack extends ExplorerState
 	{
 		update();
 		super.reflexe();
-		if(web.isBagEmpty())
+		if(webc.isBagEmpty())
 		{
-			web.setHeading((web.getHeading()+180) / 360);
-			fsm.push(new ExplorerStateCollectorSearchAndTakeFoods(fsm, web));
+			webc.setHeading((webc.getHeading()+180) % 360);
+			fsm.push(new ExplorerStateCollectorSearchAndTakeFoods(fsm, webc));
 			fsm.reflexe();
 			return;
 		}
