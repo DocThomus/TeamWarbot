@@ -58,7 +58,6 @@ public class Vecteur {
 		return r;
 	}
 	
-	// Visiblement Inutile
 	public Vecteur sub(Vecteur b)
 	{
 		Vecteur r = new Vecteur();
