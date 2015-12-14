@@ -1,16 +1,16 @@
 package Test; 
 
 import edu.warbot.agents.agents.WarBase;
-import edu.warbot.agents.enums.WarAgentCategory;
+//import edu.warbot.agents.enums.WarAgentCategory;
 import edu.warbot.agents.enums.WarAgentType;
-import edu.warbot.agents.percepts.WarAgentPercept;
+//import edu.warbot.agents.percepts.WarAgentPercept;
 import edu.warbot.brains.brains.WarBaseBrain;
-import edu.warbot.communications.WarMessage;
+//import edu.warbot.communications.WarMessage;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
-@SuppressWarnings("unused")
+
 public abstract class WarBaseBrainController extends WarBaseBrain 
 {
 
@@ -24,11 +24,11 @@ public abstract class WarBaseBrainController extends WarBaseBrain
     {
 //    	String idMessagesRecus = "";
     	
-    	this.broadcastMessageToAll("test", "");
+    	this.broadcastMessageToAgentType(WarAgentType.WarBase, "test", "");
     	
     	this.setDebugString("A");
     	
-    	ArrayList<WarMessage> boiteAuxLettres = new ArrayList<WarMessage>(getMessages());
+//    	ArrayList<WarMessage> boiteAuxLettres = new ArrayList<WarMessage>(getMessages());
 //    	
 //    	for (WarMessage message : boiteAuxLettres) {
 //    		this.setDebugString("test");
