@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="edu.warbot.communications.WarMessage"/>
 <fullyQualifiedTypeName name="edu.warbot.agents.percepts.WarPercept"/>
+<fullyQualifiedTypeName name="edu.warbot.brains.brains.WarExplorerBrain"/>
+<fullyQualifiedTypeName name="squads.WarExplorerBrainController"/>
+<fullyQualifiedTypeName name="squads.base.BaseState"/>
+<fullyQualifiedTypeName name="squads.WarBaseBrainController"/>
+<fullyQualifiedTypeName name="squads.fsm.MovableAgentState"/>
+<fullyQualifiedTypeName name="squads.fsm.Fsm"/>
+<fullyQualifiedTypeName name="squads.WarEngineerBrainController"/>
+<fullyQualifiedTypeName name="squads.engineer.EngineerState"/>
+<fullyQualifiedTypeName name="edu.warbot.agents.agents.WarEngineer"/>
+<fullyQualifiedTypeName name="edu.warbot.agents.enums.WarAgentType"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="edu.warbot.agents.percepts.WarAgentPercept"/>
+<fullyQualifiedTypeName name="edu.warbot.agents.WarBuilding"/>
+<fullyQualifiedTypeName name="edu.warbot.agents.agents.WarKamikaze"/>
+<fullyQualifiedTypeName name="edu.warbot.agents.percepts.WallPercept"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="util.Vecteur"/>
+<fullyQualifiedTypeName name="edu.warbot.communications.WarMessage"/>
 </qualifiedTypeNameHistroy>

@@ -11,19 +11,19 @@ import edu.warbot.agents.percepts.WarAgentPercept;
 
 public abstract class ExplorerState extends MovableAgentState
 {
-	public WarExplorerBrainController web;
+	public WarExplorerBrainController webc;
 	
 	ArrayList<WarAgentPercept> bases;
 	
-	public ExplorerState(Fsm fsm, WarExplorerBrainController web)
+	public ExplorerState(Fsm fsm, WarExplorerBrainController webc)
 	{
-		super(fsm, web);
-		this.web = web;
+		super(fsm, webc);
+		this.webc = webc;
 	}
 	
 	// Mettre traitement commun à tous les explorer
 	public void update()
 	{
-		bases = new ArrayList<WarAgentPercept>(web.getPerceptsAlliesByType(WarAgentType.WarBase));
+		bases = new ArrayList<WarAgentPercept>(webc.getPerceptsAlliesByType(WarAgentType.WarBase));
 	}
 }

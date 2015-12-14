@@ -15,14 +15,14 @@ public class ExplorerStateCollectorSearchAndTakeFoods extends ExplorerState
 {
 	ArrayList<WarAgentPercept> foods;
 	
-	public ExplorerStateCollectorSearchAndTakeFoods(Fsm fsm, WarExplorerBrainController web)
+	public ExplorerStateCollectorSearchAndTakeFoods(Fsm fsm, WarExplorerBrainController webc)
 	{
-		super(fsm, web);
+		super(fsm, webc);
 	}
 	
 	public String execute()
 	{
-		web.setDebugString("Taking foods");
+		webc.setDebugString("Taking foods");
 		WarAgentPercept food = foods.get(0);
 		for(WarAgentPercept f : foods)
 		{
@@ -31,7 +31,7 @@ public class ExplorerStateCollectorSearchAndTakeFoods extends ExplorerState
 				food = f;
 			}
 		}
-		web.setHeading(food.getAngle());
+		webc.setHeading(food.getAngle());
 		if(food.getDistance() <= WarFood.MAX_DISTANCE_TAKE)
 		{
 			return WarExplorer.ACTION_TAKE;
@@ -43,7 +43,7 @@ public class ExplorerStateCollectorSearchAndTakeFoods extends ExplorerState
 	{
 		update();
 		super.reflexe();
-		if(web.isBagFull() || (!web.isBagEmpty() && (bases != null) && (bases.size() > 0)))
+		if(webc.isBagFull() || (!webc.isBagEmpty() && (bases != null) && (bases.size() > 0)))
 		{
 			fsm.pop();
 			fsm.reflexe();
@@ -51,8 +51,8 @@ public class ExplorerStateCollectorSearchAndTakeFoods extends ExplorerState
 		}
 		if(foods.size() == 0)
 		{
-			web.setDebugString("Searching foods");
-			fsm.push(new ExplorerStateWiggle(fsm, web));
+			webc.setDebugString("Searching foods");
+			fsm.push(new ExplorerStateWiggle(fsm, webc));
 			fsm.reflexe();
 			return;
 		}
@@ -62,7 +62,7 @@ public class ExplorerStateCollectorSearchAndTakeFoods extends ExplorerState
 	{
 		
 		foods = new ArrayList<WarAgentPercept>();
-		for(WarAgentPercept p : web.percepts)
+		for(WarAgentPercept p : webc.percepts)
 		{
 			if(p.getType() == WarAgentType.WarFood)
 			{

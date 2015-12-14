@@ -1,0 +1,58 @@
+package squads.base;
+
+import java.util.ArrayList;
+
+import squads.WarBaseBrainController;
+import squads.fsm.Fsm;
+import squads.fsm.State;
+
+import edu.warbot.agents.agents.WarBase;
+import edu.warbot.communications.WarMessage;
+
+public class BaseState extends State
+{
+	public WarBaseBrainController wbbc;
+	public boolean _alreadyCreated;
+	
+	public BaseState(Fsm fsm, WarBaseBrainController wbbc)
+	{
+		super(fsm, wbbc);
+		this.wbbc = wbbc;
+		
+		_alreadyCreated = false;
+	}
+	
+	public String execute()
+	{
+		ArrayList<WarMessage> boiteAuxLettres = new ArrayList<WarMessage>(wbbc.getMessages());
+		
+		reflexe();
+		
+		for(WarMessage message : boiteAuxLettres)
+		{
+			if(message.getMessage() == "WhereAreYou")
+			{
+				wbbc.sendMessage(message.getSenderID(), "Here", "");
+			}
+		}
+		
+		if (!_alreadyCreated)
+		{
+            setNextAgentToCreate(WarAgentType.WarEngineer);
+            _alreadyCreated = true;
+            return WarBase.ACTION_CREATE;
+        }
+		
+		return WarBase.ACTION_IDLE;
+	}
+	
+	public void reflexe()
+	{
+		
+	}
+
+	public void update()
+	{
+		
+	}
+}
