@@ -1,75 +1,39 @@
 package squads;
 
-import edu.warbot.agents.agents.WarBase;
-//import edu.warbot.agents.enums.WarAgentCategory;
-//import edu.warbot.agents.enums.WarAgentType;
-//import edu.warbot.agents.percepts.WarAgentPercept;
+import edu.warbot.agents.percepts.WarAgentPercept;
 import edu.warbot.brains.brains.WarBaseBrain;
 import edu.warbot.communications.WarMessage;
 
-import java.util.List;
+import java.util.ArrayList;
+
+import squads.base.BaseState;
+import squads.fsm.Fsm;
 
 public abstract class WarBaseBrainController extends WarBaseBrain
 {
+	Fsm fsm;
+	
+	public ArrayList<WarMessage> mailbox;
+	public ArrayList<WarAgentPercept> percepts;
+	
     public WarBaseBrainController()
     {
         super();
+        fsm = new Fsm();
+        fsm.push(new BaseState(fsm, this));
     }
-
 
     @Override
     public String action()
     {
-    	List<WarMessage> messages = getMessages();
-    	
-    	for(WarMessage message : messages)
-    	{
-    		if(message.getMessage() == "WhereAreYou")
-    		{
-    			sendMessage(message.getSenderID(), "Here", "");
-    		}
-    	}
-    	
-    	return WarBase.ACTION_IDLE;
-    	
-//        if (!_alreadyCreated)
-//        {
-//            setNextAgentToCreate(WarAgentType.WarEngineer);
-//            _alreadyCreated = true;
-//            return WarBase.ACTION_CREATE;
-//        }
-//
-//        if (getNbElementsInBag() >= 0 && getHealth() <= 0.8 * getMaxHealth())
-//            return WarBase.ACTION_EAT;
-//
-//        if (getMaxHealth() == getHealth())
-//        {
-//            _alreadyCreated = true;
-//        }
-//
-//        List<WarMessage> messages = getMessages();
-//
-//        for (WarMessage message : messages)
-//        {
-//            if (message.getMessage().equals("Where is the base"))
-//                reply(message, "I'm here");
-//        }
-//
-//        for (WarAgentPercept percept : getPerceptsEnemies())
-//        {
-//            if (isEnemy(percept) && percept.getType().getCategory().equals(WarAgentCategory.Soldier))
-//                broadcastMessageToAll("I'm under attack",
-//                        String.valueOf(percept.getAngle()),
-//                        String.valueOf(percept.getDistance()));
-//        }
-//
-//        for (WarAgentPercept percept : getPerceptsResources())
-//        {
-//            if (percept.getType().equals(WarAgentType.WarFood))
-//                broadcastMessageToAgentType(WarAgentType.WarExplorer, "I detected food",
-//                        String.valueOf(percept.getAngle()),
-//                        String.valueOf(percept.getDistance()));
-//        }
+    	update();
+        return fsm.execute();
     }
+    
+    public void update()
+	{
+		mailbox = new ArrayList<WarMessage>(getMessages());
+		percepts = new ArrayList<WarAgentPercept>(getPercepts());
+	}
 
 }
