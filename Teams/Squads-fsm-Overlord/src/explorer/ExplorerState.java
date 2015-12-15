@@ -1,29 +1,33 @@
 package explorer;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import brains.WarExplorerBrainController;
+import edu.warbot.communications.WarMessage;
 import fsm.Fsm;
 import fsm.MovableAgentState;
 
-import edu.warbot.agents.enums.WarAgentType;
-import edu.warbot.agents.percepts.WarAgentPercept;
-
 public abstract class ExplorerState extends MovableAgentState
 {
-	public WarExplorerBrainController webc;
+	protected WarExplorerBrainController webc;
 	
-	ArrayList<WarAgentPercept> bases;
+	protected int idOverlord = -1;
+	protected List<WarMessage> boiteAuxLettres;
 	
 	public ExplorerState(Fsm fsm, WarExplorerBrainController webc)
 	{
 		super(fsm, webc);
 		this.webc = webc;
 	}
-	
-	// Mettre traitement commun à tous les explorer
+
 	public void update()
 	{
-		bases = new ArrayList<WarAgentPercept>(webc.getPerceptsAlliesByType(WarAgentType.WarBase));
+		boiteAuxLettres = webc.getMessages();
+		
+		for (WarMessage m : boiteAuxLettres) {
+			if (m.getMessage() == "ImTheOverlord") {
+				this.idOverlord = m.getSenderID();
+			}
+		}
 	}
 }

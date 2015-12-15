@@ -2,9 +2,8 @@ package brains;
 
 import java.util.ArrayList;
 
-import explorer.ExplorerStateCollectorBringBack;
+import explorer.ExplorerStateIdle;
 import fsm.Fsm;
-
 import edu.warbot.agents.percepts.WarAgentPercept;
 import edu.warbot.brains.brains.WarExplorerBrain;
 import edu.warbot.communications.WarMessage;
@@ -20,7 +19,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain
     {
         super();
         fsm = new Fsm();
-        fsm.push(new ExplorerStateCollectorBringBack(fsm, this));
+        fsm.push(new ExplorerStateIdle(fsm, this));
     }
 
     @Override

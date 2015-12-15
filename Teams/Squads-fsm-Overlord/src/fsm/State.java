@@ -4,8 +4,8 @@ import edu.warbot.brains.WarBrain;
 
 public abstract class State
 {
-	public Fsm fsm;
-	public WarBrain wb;
+	protected Fsm fsm;
+	protected WarBrain wb;
 	
 	public State(Fsm fsm, WarBrain wb)
 	{
