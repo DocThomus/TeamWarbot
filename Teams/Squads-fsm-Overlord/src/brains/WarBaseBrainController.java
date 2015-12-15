@@ -26,7 +26,7 @@ public abstract class WarBaseBrainController extends WarBaseBrain
     @Override
     public String action()
     {
-    	update();
+    	this.update();
         return fsm.execute();
     }
     

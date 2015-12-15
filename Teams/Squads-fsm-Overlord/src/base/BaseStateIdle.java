@@ -2,20 +2,17 @@ package base;
 
 import brains.WarBaseBrainController;
 import edu.warbot.agents.agents.WarBase;
-import edu.warbot.agents.enums.WarAgentType;
 import fsm.Fsm;
 
 public class BaseStateIdle extends BaseState {
 
-	public BaseStateIdle(Fsm fsm, WarBaseBrainController wbbc) {
-		super(fsm, wbbc);
+	public BaseStateIdle(Fsm fsm, WarBaseBrainController brain) {
+		super(fsm, brain);
 	}
 	
 	public String execute()
 	{
-        wbbc.setNextAgentToCreate(WarAgentType.WarEngineer);
-        return WarBase.ACTION_CREATE;
-		
+		brain.setDebugString("IDLE");
+        return WarBase.ACTION_IDLE;
 	}
-
 }
