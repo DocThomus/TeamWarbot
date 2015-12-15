@@ -3,4 +3,4 @@
 .classpath
 *.jardesc
 *.jar
-*.py/bin/
+*.py
