@@ -1,9 +1,0 @@
-package squads.explorer;
-
-public class ExplorerStateTroll extends ExplorerState
-{
-	public ExplorerState(Fsm fsm, WarExplorerBrain web)
-	{
-		super(fsm, web);
-	}
-}

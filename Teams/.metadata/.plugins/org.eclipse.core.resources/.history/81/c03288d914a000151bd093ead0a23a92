@@ -1,9 +1,0 @@
-package squads.fsm;
-
-public class StateUnblocking extends MovableAgentState
-{
-	public StateUnblocking(Fsm fsm, WarBrain wb)
-	{
-		super(fsm, wb);
-	}
-}
