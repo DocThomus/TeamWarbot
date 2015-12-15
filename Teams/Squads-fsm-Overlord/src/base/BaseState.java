@@ -33,7 +33,7 @@ public class BaseState extends State
 		update();
 		reflexe();
 
-        return WarBase.ACTION_CREATE;
+        return WarBase.ACTION_IDLE;
 	}
 	
 	// Envoi un message 
