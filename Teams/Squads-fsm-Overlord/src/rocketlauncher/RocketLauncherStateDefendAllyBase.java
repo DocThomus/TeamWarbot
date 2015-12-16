@@ -23,7 +23,7 @@ public class RocketLauncherStateDefendAllyBase extends State {
 
 	@Override
 	public String execute() {
-		brain.setDebugString("Defend");
+		brain.setDebugString("D" + brain.distanceRLAllielePlusProche);
 		
 		brain.broadcastMessageToAll("RLHere", "");
 		
@@ -33,10 +33,16 @@ public class RocketLauncherStateDefendAllyBase extends State {
 			brain.setRandomHeading();
 		}
 		
-		if (brain.distanceEnemyUnit > 60) {
+		if (brain.distanceEnemyUnit < 50) {
+			brain.setHeading((brain.angleEnemyUnit + 180) % 360);
+			return WarRocketLauncher.ACTION_MOVE;
+		} else if (brain.distanceEnemyUnit > 60) {
 			return WarRocketLauncher.ACTION_MOVE;
 		} else {
-			if (brain.isReloaded())
+			if (brain.distanceRLAllielePlusProche < 25) { 
+				brain.setHeading((brain.angleRLAllieLePlusProche + 180 % 360));
+				return WarRocketLauncher.ACTION_MOVE;
+			} else if (brain.isReloaded())
 	             return WarRocketLauncher.ACTION_FIRE;
 	         else if (brain.isReloading())
 	             return WarRocketLauncher.ACTION_IDLE;
@@ -65,6 +71,7 @@ public class RocketLauncherStateDefendAllyBase extends State {
 	public void update() {
 		this.enemyUnitSpotted = false;
 		this.enemyBaseSpotted = false;
+		brain.distanceRLAllielePlusProche = 500000;
 		for (WarMessage m : brain.mailbox) {
 			if (m.getMessage() == "EnemyUnit") {
 				this.enemyUnitSpotted = true;
@@ -80,6 +87,11 @@ public class RocketLauncherStateDefendAllyBase extends State {
 				Vecteur enemy = base.add(enemyRelBase);
 				brain.distanceEnemyBase = enemy.getLongueur();
 				brain.angleEnemyBase = enemy.getAngle();
+			} else if (m.getSenderID() != brain.getID() && m.getMessage() == "RLHere") {
+				if (brain.distanceRLAllielePlusProche > m.getDistance()) {
+					brain.distanceRLAllielePlusProche = m.getDistance();
+					brain.angleRLAllieLePlusProche = m.getAngle();
+				}
 			}
 		}
 	}
