@@ -14,6 +14,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain
 	
 	public ArrayList<WarMessage> mailbox;
 	public ArrayList<WarAgentPercept> percepts;
+	public int idOverlord = -1;
 	
     public WarExplorerBrainController()
     {

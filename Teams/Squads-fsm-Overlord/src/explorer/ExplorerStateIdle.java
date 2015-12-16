@@ -2,13 +2,16 @@ package explorer;
 
 import brains.WarExplorerBrainController;
 import fsm.Fsm;
+import fsm.State;
 import edu.warbot.agents.agents.WarExplorer;
 
-public class ExplorerStateIdle extends ExplorerState
+public class ExplorerStateIdle extends State
 {
-	public ExplorerStateIdle(Fsm fsm, WarExplorerBrainController web)
+	public WarExplorerBrainController brain;
+	
+	public ExplorerStateIdle(Fsm fsm, WarExplorerBrainController brain)
 	{
-		super(fsm, web);
+		super(fsm, brain);
 	}
 
 	public String execute()
@@ -19,6 +22,11 @@ public class ExplorerStateIdle extends ExplorerState
 	
 	public void reflexe()
 	{
-		super.reflexe();
+		
+	}
+
+	public void update() 
+	{		
+		
 	}
 }

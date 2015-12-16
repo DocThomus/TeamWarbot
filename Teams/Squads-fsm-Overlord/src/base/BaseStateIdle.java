@@ -7,17 +7,17 @@ import fsm.State;
 
 public class BaseStateIdle extends State
 {
-	public WarBaseBrainController wbbc;
+	public WarBaseBrainController brain;
 	
-	public BaseStateIdle(Fsm fsm, WarBaseBrainController wbbc)
+	public BaseStateIdle(Fsm fsm, WarBaseBrainController brain)
 	{
-		super(fsm, wbbc);
-		this.wbbc = wbbc;
+		super(fsm, brain);
+		this.brain = brain;
 	}
 	
 	public String execute()
 	{
-		wbbc.setDebugString("I'm a shit...");
+		brain.setDebugString("Idle");
 		return WarBase.ACTION_IDLE;
 	}
 	

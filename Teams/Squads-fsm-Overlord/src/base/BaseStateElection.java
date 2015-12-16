@@ -7,14 +7,14 @@ import fsm.State;
 
 public class BaseStateElection extends State
 {
-	public WarBaseBrainController wbbc;
-	public boolean election;
+	public WarBaseBrainController brain;
+	public boolean elected;
 	
-	public BaseStateElection(Fsm fsm, WarBaseBrainController wbbc)
+	public BaseStateElection(Fsm fsm, WarBaseBrainController brain)
 	{
-		super(fsm, wbbc);
-		this.wbbc = wbbc;
-		this.election = false;
+		super(fsm, brain);
+		this.brain = brain;
+		this.elected = false;
 	}
 	
 	public String execute()
@@ -26,27 +26,27 @@ public class BaseStateElection extends State
 	public void reflexe()
 	{
 		update();
-		if(wbbc.myRoles("bases").contains("manager"))
+		if(brain.myRoles("bases").contains("manager"))
 		{
 			fsm.pop();
-			fsm.push(new BaseStateKing(fsm, wbbc));
-			wbbc.broadcastMessageToAll("I'm the King !!", "");
+			fsm.push(new BaseStateKing(fsm, brain));
+			brain.broadcastMessageToAll("I'm the King !!", "");
 			return;
 		}
 		else
 		{
 			fsm.pop();
-			fsm.push(new BaseStateIdle(fsm, wbbc));
+			fsm.push(new BaseStateIdle(fsm, brain));
 			return;
 		}
 	}
 	
 	public void update()
 	{
-		if(!election)
+		if(!elected)
 		{
-			wbbc.requestRole("bases", "base");
-			election = true;
+			brain.requestRole("bases", "base");
+			elected = true;
 		}
 	}
 }

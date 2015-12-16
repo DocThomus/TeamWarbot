@@ -3,32 +3,30 @@ package explorer;
 import brains.WarExplorerBrainController;
 import edu.warbot.agents.agents.WarExplorer;
 import fsm.Fsm;
+import fsm.State;
 
-//import edu.warbot.agents.actions.constants.ControllableActions;
-//import edu.warbot.agents.agents.WarExplorer;
-//import edu.warbot.agents.enums.WarAgentType;
-//import edu.warbot.agents.percepts.WarAgentPercept;
-//import edu.warbot.communications.WarMessage;
-
-public class ExplorerStateBringFood extends ExplorerState
+public class ExplorerStateBringFood extends State
 {
-	public ExplorerStateBringFood(Fsm fsm, WarExplorerBrainController webc)
+	public WarExplorerBrainController brain;
+	
+	public ExplorerStateBringFood(Fsm fsm, WarExplorerBrainController brain)
 	{
-		super(fsm, webc);
+		super(fsm, brain);
 	}
 	
 	public String execute()
 	{
-		webc.setDebugString("StateBringFood");
+		brain.setDebugString("StateBringFood");
 		return WarExplorer.ACTION_IDLE;
 	}
 	
 	public void reflexe()
 	{
+		
 	}
 	
 	public void update()
 	{
-		super.update();
+		
 	}
 }

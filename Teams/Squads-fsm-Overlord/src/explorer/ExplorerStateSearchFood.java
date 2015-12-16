@@ -1,29 +1,25 @@
 package explorer;
 
-//import java.util.ArrayList;
-
 import java.util.ArrayList;
-
 import brains.WarExplorerBrainController;
 import fsm.Fsm;
+import fsm.State;
 import edu.warbot.agents.agents.WarExplorer;
-//import edu.warbot.agents.agents.WarExplorer;
-//import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.agents.percepts.WarAgentPercept;
-//import edu.warbot.agents.resources.WarFood;
 
-public class ExplorerStateSearchFood extends ExplorerState
+public class ExplorerStateSearchFood extends State
 {
+	public WarExplorerBrainController brain;
 	ArrayList<WarAgentPercept> foods;
 	
-	public ExplorerStateSearchFood(Fsm fsm, WarExplorerBrainController webc)
+	public ExplorerStateSearchFood(Fsm fsm, WarExplorerBrainController brain)
 	{
-		super(fsm, webc);
+		super(fsm, brain);
 	}
 	
 	public String execute()
 	{
-		webc.setDebugString("StateSearchFood");
+		brain.setDebugString("StateSearchFood");
 		return WarExplorer.ACTION_IDLE;
 	}
 	
@@ -34,6 +30,6 @@ public class ExplorerStateSearchFood extends ExplorerState
 	
 	public void update()
 	{
-		super.update();
+		
 	}
 }

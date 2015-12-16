@@ -3,22 +3,30 @@ package explorer;
 import brains.WarExplorerBrainController;
 import edu.warbot.agents.agents.WarExplorer;
 import fsm.Fsm;
+import fsm.State;
 
-public class ExplorerStateScout extends ExplorerState{
-
-	public ExplorerStateScout(Fsm fsm, WarExplorerBrainController webc) {
-		super(fsm, webc);
+public class ExplorerStateScout extends State
+{
+	public WarExplorerBrainController brain;
+	
+	public ExplorerStateScout(Fsm fsm, WarExplorerBrainController brain) 
+	{
+		super(fsm, brain);
 	}
 
 	public String execute()
 	{
-		webc.setDebugString("StateScout");
-		fsm.pop();
+		brain.setDebugString("StateScout");
 		return WarExplorer.ACTION_IDLE;
 	}
 	
 	public void reflexe()
 	{
-		super.reflexe();
+	}
+
+	@Override
+	public void update() 
+	{
+
 	}
 }

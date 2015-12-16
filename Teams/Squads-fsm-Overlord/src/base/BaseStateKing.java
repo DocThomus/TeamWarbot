@@ -11,14 +11,14 @@ import fsm.State;
 
 public class BaseStateKing extends State
 {
-	public WarBaseBrainController wbbc;
+	public WarBaseBrainController brain;
 	
 	public HashMap<Integer, Vecteur> enemyBases;
 	
-	public BaseStateKing(Fsm fsm, WarBaseBrainController wbbc)
+	public BaseStateKing(Fsm fsm, WarBaseBrainController brain)
 	{
-		super(fsm, wbbc);
-		this.wbbc = wbbc;
+		super(fsm, brain);
+		this.brain = brain;
 		
 		enemyBases = new HashMap<Integer, Vecteur>();
 	}
@@ -26,7 +26,7 @@ public class BaseStateKing extends State
 	public String execute()
 	{
 		reflexe();
-		wbbc.setDebugString("I'm the King !!" + wbbc.myRoles("bases").toString());
+		brain.setDebugString("I'm the King !!" + brain.myRoles("bases").toString());
 		return WarBase.ACTION_IDLE;
 	}
 	
@@ -38,20 +38,20 @@ public class BaseStateKing extends State
 	public void update()
 	{
 		
-		for(WarMessage m : wbbc.mailbox)
+		for(WarMessage m : brain.mailbox)
 		{
 			if(m.getMessage() == "Who's the King ?")
 			{
-				wbbc.sendMessage(m.getSenderID(), "I'm the King !!", "");
+				brain.sendMessage(m.getSenderID(), "I'm the King !!", "");
 			}
 			
 			if(m.getMessage() == "WhereAreYou")
 			{
-				wbbc.sendMessage(m.getSenderID(), "Here", "");
+				brain.sendMessage(m.getSenderID(), "Here", "");
 			}
 			if(m.getMessage() == "EnemyBase?" && enemyBases.size() > 0)
 			{
-				wbbc.sendMessage(m.getSenderID(), "EnemyBase",
+				brain.sendMessage(m.getSenderID(), "EnemyBase",
 						String.valueOf(((Vecteur) enemyBases.values().toArray()[0]).getLongueur()),
 						String.valueOf(((Vecteur) enemyBases.values().toArray()[0]).getAngle()));
 			}
