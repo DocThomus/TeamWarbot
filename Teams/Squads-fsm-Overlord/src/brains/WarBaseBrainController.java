@@ -6,7 +6,7 @@ import edu.warbot.communications.WarMessage;
 
 import java.util.ArrayList;
 
-import base.BaseState;
+import base.BaseStateElection;
 import fsm.Fsm;
 
 public abstract class WarBaseBrainController extends WarBaseBrain
@@ -20,13 +20,13 @@ public abstract class WarBaseBrainController extends WarBaseBrain
     {
         super();
         fsm = new Fsm();
-        fsm.push(new BaseState(fsm, this));
+        fsm.push(new BaseStateElection(fsm, this));
     }
 
     @Override
     public String action()
     {
-    	update();
+    	this.update();
         return fsm.execute();
     }
     

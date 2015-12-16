@@ -2,11 +2,11 @@ package brains;
 
 import java.util.ArrayList;
 
-import explorer.ExplorerStateIdle;
 import fsm.Fsm;
 import edu.warbot.agents.percepts.WarAgentPercept;
 import edu.warbot.brains.brains.WarExplorerBrain;
 import edu.warbot.communications.WarMessage;
+import explorer.ExplorerStateIdle;
 
 public abstract class WarExplorerBrainController extends WarExplorerBrain
 {
@@ -14,6 +14,9 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain
 	
 	public ArrayList<WarMessage> mailbox;
 	public ArrayList<WarAgentPercept> percepts;
+	public int idOverlord = -1;
+	public double distanceBase;
+	public double directionBase;
 	
     public WarExplorerBrainController()
     {
@@ -25,7 +28,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain
     @Override
     public String action()
     {
-    	update();
+    	this.update();
         return fsm.execute();
     }
     
