@@ -47,7 +47,7 @@ public class ExplorerStateSearchFood extends State
 	}
 	
 	public void reflexe() {
-		update();
+		this.update();
 		if(brain.isBagFull()) {
 			fsm.push(new ExplorerStateBringFood(fsm, brain));
 			fsm.reflexe();
@@ -66,6 +66,8 @@ public class ExplorerStateSearchFood extends State
 		for(WarMessage m : brain.mailbox) {
 			if (m.getMessage() == "I'm the King !!") {
 				brain.idOverlord = m.getSenderID();
+				brain.distanceBase = m.getDistance();
+				brain.directionBase = m.getAngle();
 			}
 		}
 	}

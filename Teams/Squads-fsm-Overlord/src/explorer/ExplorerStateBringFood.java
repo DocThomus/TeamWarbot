@@ -11,41 +11,38 @@ public class ExplorerStateBringFood extends State
 {
 	public WarExplorerBrainController brain;
 	
-	private double distanceBase;
-	private double directionBase;
-	
-	public ExplorerStateBringFood(Fsm fsm, WarExplorerBrainController brain)
-	{
+	public ExplorerStateBringFood(Fsm fsm, WarExplorerBrainController brain) {
 		super(fsm, brain);
 		this.brain = brain;
+		brain.distanceBase = 50000;
+		brain.directionBase = 0;
 	}
 	
-	public String execute()
-	{
+	public String execute() {
 		brain.setDebugString("bring");
-		if (this.distanceBase < ControllableActions.MAX_DISTANCE_GIVE) {
+		if (brain.distanceBase < ControllableActions.MAX_DISTANCE_GIVE) {
+			brain.setIdNextAgentToGive(brain.idOverlord);
 			return WarExplorer.ACTION_GIVE;
 		} else {
-			brain.setHeading(this.directionBase);
+			brain.setHeading(brain.directionBase);
 			return WarExplorer.ACTION_MOVE;
 		}
 	}
 	
-	public void reflexe()
-	{
+	public void reflexe() {
+		this.update();
 		if (brain.isBagEmpty()) {
 			fsm.pop();
 			fsm.reflexe();
 		}
 	}
 	
-	public void update()
-	{
+	public void update() {
 		for(WarMessage m : brain.mailbox) {
 			if (m.getMessage() == "I'm the King !!") {
 				brain.idOverlord = m.getSenderID();
-				this.distanceBase = m.getDistance();
-				this.directionBase = m.getAngle();
+				brain.distanceBase = m.getDistance();
+				brain.directionBase = m.getAngle();
 			}
 		}
 	}

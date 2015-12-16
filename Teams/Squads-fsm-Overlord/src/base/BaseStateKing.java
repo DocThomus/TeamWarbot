@@ -27,7 +27,7 @@ public class BaseStateKing extends State
 	
 	public String execute() {
 		//brain.setDebugString("I'm the King !!");
-		brain.broadcastMessageToAll("I'm the King !!");
+		brain.broadcastMessageToAll("I'm the King !!", "");
 		return WarBase.ACTION_IDLE;
 	}
 	
