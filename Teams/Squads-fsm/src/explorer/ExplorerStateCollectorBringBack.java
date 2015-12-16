@@ -1,13 +1,13 @@
-package squads.explorer;
+package explorer;
 
-import squads.WarExplorerBrainController;
-import squads.fsm.Fsm;
+import brain.WarExplorerBrainController;
 
 import edu.warbot.agents.actions.constants.ControllableActions;
 import edu.warbot.agents.agents.WarExplorer;
 import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.agents.percepts.WarAgentPercept;
 import edu.warbot.communications.WarMessage;
+import fsm.Fsm;
 
 public class ExplorerStateCollectorBringBack extends ExplorerState
 {
@@ -43,7 +43,7 @@ public class ExplorerStateCollectorBringBack extends ExplorerState
 		else
 		{
 			webc.setDebugString("Bringing back foods to base");
-			webc.broadcastMessageToAgentType(WarAgentType.WarBase, "WhereAreYou","");
+			webc.sendMessage(webc.idOfKing, "WhereAreYou","");
 			for(WarMessage message : webc.mailbox)
 			{
 				if(message.getSenderType() == WarAgentType.WarBase)

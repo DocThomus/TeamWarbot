@@ -1,8 +1,8 @@
-package squads.explorer;
+package explorer;
 
-import squads.WarExplorerBrainController;
-import squads.fsm.Fsm;
+import brain.WarExplorerBrainController;
 import edu.warbot.agents.agents.WarExplorer;
+import fsm.Fsm;
 
 public class ExplorerStateIdle extends ExplorerState
 {

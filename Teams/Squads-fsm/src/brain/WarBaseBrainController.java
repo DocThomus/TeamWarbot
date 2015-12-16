@@ -1,26 +1,30 @@
-package squads;
+package brain;
 
 import java.util.ArrayList;
 
-import squads.explorer.ExplorerStateCollectorBringBack;
-import squads.fsm.Fsm;
-
 import edu.warbot.agents.percepts.WarAgentPercept;
-import edu.warbot.brains.brains.WarExplorerBrain;
+import edu.warbot.brains.brains.WarBaseBrain;
 import edu.warbot.communications.WarMessage;
 
-public abstract class WarExplorerBrainController extends WarExplorerBrain
+import fsm.Fsm;
+import base.BaseStateElection;
+
+public abstract class WarBaseBrainController extends WarBaseBrain
 {
 	Fsm fsm;
 	
 	public ArrayList<WarMessage> mailbox;
 	public ArrayList<WarAgentPercept> percepts;
 	
-    public WarExplorerBrainController()
+	public int idOfKing;
+	
+    public WarBaseBrainController()
     {
         super();
         fsm = new Fsm();
-        fsm.push(new ExplorerStateCollectorBringBack(fsm, this));
+        fsm.push(new BaseStateElection(fsm, this));
+        
+        idOfKing = -1;
     }
 
     @Override
@@ -35,4 +39,5 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain
 		mailbox = new ArrayList<WarMessage>(getMessages());
 		percepts = new ArrayList<WarAgentPercept>(getPercepts());
 	}
+
 }

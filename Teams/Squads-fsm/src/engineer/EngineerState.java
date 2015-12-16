@@ -1,6 +1,8 @@
-package squads.engineer;
+package engineer;
 
 import java.util.ArrayList;
+
+import brain.WarEngineerBrainController;
 
 import edu.warbot.agents.WarBuilding;
 import edu.warbot.agents.agents.WarEngineer;
@@ -8,9 +10,8 @@ import edu.warbot.agents.agents.WarExplorer;
 import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.agents.percepts.WarAgentPercept;
 import edu.warbot.communications.WarMessage;
-import squads.WarEngineerBrainController;
-import squads.fsm.Fsm;
-import squads.fsm.MovableAgentState;
+import fsm.Fsm;
+import fsm.MovableAgentState;
 
 public class EngineerState extends MovableAgentState
 {

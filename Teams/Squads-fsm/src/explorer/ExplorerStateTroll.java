@@ -1,7 +1,8 @@
-package squads.explorer;
+package explorer;
 
-import squads.WarExplorerBrainController;
-import squads.fsm.Fsm;
+import edu.warbot.agents.agents.WarExplorer;
+import fsm.Fsm;
+import brain.WarExplorerBrainController;
 
 public class ExplorerStateTroll extends ExplorerState
 {
@@ -12,7 +13,7 @@ public class ExplorerStateTroll extends ExplorerState
 	
 	public String execute()
 	{
-		return null;
+		return WarExplorer.ACTION_IDLE;
 	}
 	
 	public void reflexe()

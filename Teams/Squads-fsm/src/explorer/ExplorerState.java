@@ -1,13 +1,14 @@
-package squads.explorer;
+package explorer;
 
 import java.util.ArrayList;
 
-import squads.WarExplorerBrainController;
-import squads.fsm.Fsm;
-import squads.fsm.MovableAgentState;
+import brain.WarExplorerBrainController;
+
 
 import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.agents.percepts.WarAgentPercept;
+import fsm.Fsm;
+import fsm.MovableAgentState;
 
 public abstract class ExplorerState extends MovableAgentState
 {

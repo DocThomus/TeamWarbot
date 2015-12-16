@@ -1,4 +1,4 @@
-package squads;
+package brain;
 
 import edu.warbot.agents.agents.WarTurret;
 import edu.warbot.agents.percepts.WarAgentPercept;

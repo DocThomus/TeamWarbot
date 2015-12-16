@@ -1,0 +1,13 @@
+Name: Squads-fsm
+IconPath: Squads.png
+SoundPath: 
+Description: |
+    Création de petites esquades polyvalentes pour sécuriser des points clés.
+BrainsPackage: brain
+AgentsBrainClasses:
+    WarBase: WarBaseBrainController
+    WarExplorer: WarExplorerBrainController
+    WarRocketLauncher: WarRocketLauncherBrainController
+    WarKamikaze: WarKamikazeBrainController
+    WarEngineer: WarEngineerBrainController
+    WarTurret: WarTurretBrainController

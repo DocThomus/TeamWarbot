@@ -1,15 +1,14 @@
-package squads.explorer;
-
-//import java.util.ArrayList;
+package explorer;
 
 import java.util.ArrayList;
 
-import squads.WarExplorerBrainController;
-import squads.fsm.Fsm;
+import brain.WarExplorerBrainController;
+
 import edu.warbot.agents.agents.WarExplorer;
 import edu.warbot.agents.enums.WarAgentType;
 import edu.warbot.agents.percepts.WarAgentPercept;
 import edu.warbot.agents.resources.WarFood;
+import fsm.Fsm;
 
 public class ExplorerStateCollectorSearchAndTakeFoods extends ExplorerState
 {
@@ -51,7 +50,7 @@ public class ExplorerStateCollectorSearchAndTakeFoods extends ExplorerState
 		}
 		if(foods.size() == 0)
 		{
-			webc.setDebugString("Searching foods");
+			webc.setDebugString("Searching foods" + webc.idOfKing);
 			fsm.push(new ExplorerStateWiggle(fsm, webc));
 			fsm.reflexe();
 			return;
@@ -60,7 +59,6 @@ public class ExplorerStateCollectorSearchAndTakeFoods extends ExplorerState
 	
 	public void update()
 	{
-		
 		foods = new ArrayList<WarAgentPercept>();
 		for(WarAgentPercept p : webc.percepts)
 		{

@@ -1,4 +1,4 @@
-package squads.fsm;
+package fsm;
 
 import java.util.ArrayList;
 

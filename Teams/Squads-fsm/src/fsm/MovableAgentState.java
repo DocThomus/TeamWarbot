@@ -1,4 +1,4 @@
-package squads.fsm;
+package fsm;
 
 import edu.warbot.brains.WarBrain;
 import edu.warbot.brains.capacities.Movable;

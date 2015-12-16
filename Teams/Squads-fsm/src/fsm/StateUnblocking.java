@@ -1,4 +1,4 @@
-package squads.fsm;
+package fsm;
 
 import edu.warbot.agents.agents.WarExplorer;
 import edu.warbot.brains.WarBrain;
