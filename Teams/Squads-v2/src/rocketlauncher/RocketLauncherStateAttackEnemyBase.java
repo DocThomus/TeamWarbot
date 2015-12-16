@@ -31,10 +31,16 @@ public class RocketLauncherStateAttackEnemyBase extends State {
 			brain.setRandomHeading();
 		}
 		
-		if (brain.distanceEnemyBase > 60) {
+		if (brain.distanceEnemyBase < 50) {
+			brain.setHeading((brain.angleEnemyBase + 180) % 360);
+			return WarRocketLauncher.ACTION_MOVE;
+		} else if (brain.distanceEnemyBase > 60) {
 			return WarRocketLauncher.ACTION_MOVE;
 		} else {
-			if (brain.isReloaded())
+			if (brain.distanceRLAllielePlusProche < 25) { 
+				brain.setHeading((brain.angleRLAllieLePlusProche + 180 % 360));
+				return WarRocketLauncher.ACTION_MOVE;
+			} else if (brain.isReloaded())
 	             return WarRocketLauncher.ACTION_FIRE;
 	         else if (brain.isReloading())
 	             return WarRocketLauncher.ACTION_IDLE;
@@ -57,6 +63,7 @@ public class RocketLauncherStateAttackEnemyBase extends State {
 	@Override
 	public void update() {
 		this.enemyUnitSpotted = false;
+		brain.distanceRLAllielePlusProche = 500000;
 		for (WarMessage m : brain.mailbox) {
 			if (m.getMessage() == "EnemyUnit") {
 				this.enemyUnitSpotted = true;
@@ -71,6 +78,11 @@ public class RocketLauncherStateAttackEnemyBase extends State {
 				Vecteur enemy = base.add(enemyRelBase);
 				brain.distanceEnemyBase = enemy.getLongueur();
 				brain.angleEnemyBase = enemy.getAngle();
+			} else if (m.getSenderID() != brain.getID() && m.getMessage() == "RLHere") {
+				if (brain.distanceRLAllielePlusProche > m.getDistance()) {
+					brain.distanceRLAllielePlusProche = m.getDistance();
+					brain.angleRLAllieLePlusProche = m.getAngle();
+				}
 			}
 		}
 	}	
