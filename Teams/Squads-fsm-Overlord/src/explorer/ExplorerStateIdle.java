@@ -4,6 +4,7 @@ import brains.WarExplorerBrainController;
 import fsm.Fsm;
 import fsm.State;
 import edu.warbot.agents.agents.WarExplorer;
+import edu.warbot.communications.WarMessage;
 
 public class ExplorerStateIdle extends State
 {
@@ -35,5 +36,10 @@ public class ExplorerStateIdle extends State
 	public void update() 
 	{		
 		brain.requestRole("explorers", "scout");
+		for(WarMessage m : brain.mailbox) {
+			if (m.getMessage() == "I'm the King !!") {
+				brain.idOverlord = m.getSenderID();
+			}
+		}
 	}
 }

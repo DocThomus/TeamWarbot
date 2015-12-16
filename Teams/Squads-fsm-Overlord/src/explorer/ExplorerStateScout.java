@@ -2,6 +2,7 @@ package explorer;
 
 import brains.WarExplorerBrainController;
 import edu.warbot.agents.agents.WarExplorer;
+import edu.warbot.communications.WarMessage;
 import fsm.Fsm;
 import fsm.State;
 
@@ -28,6 +29,10 @@ public class ExplorerStateScout extends State
 	@Override
 	public void update() 
 	{
-
+		for(WarMessage m : brain.mailbox) {
+			if (m.getMessage() == "I'm the King !!") {
+				brain.idOverlord = m.getSenderID();
+			}
+		}
 	}
 }
