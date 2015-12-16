@@ -12,6 +12,7 @@ public class ExplorerStateScout extends State
 	public ExplorerStateScout(Fsm fsm, WarExplorerBrainController brain) 
 	{
 		super(fsm, brain);
+		this.brain = brain;
 	}
 
 	public String execute()

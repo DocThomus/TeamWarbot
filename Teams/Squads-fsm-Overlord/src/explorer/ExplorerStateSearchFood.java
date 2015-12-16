@@ -15,6 +15,7 @@ public class ExplorerStateSearchFood extends State
 	public ExplorerStateSearchFood(Fsm fsm, WarExplorerBrainController brain)
 	{
 		super(fsm, brain);
+		this.brain = brain;
 	}
 	
 	public String execute()

@@ -2,11 +2,11 @@ package brains;
 
 import java.util.ArrayList;
 
-import explorer.ExplorerStateIdle;
 import fsm.Fsm;
 import edu.warbot.agents.percepts.WarAgentPercept;
 import edu.warbot.brains.brains.WarExplorerBrain;
 import edu.warbot.communications.WarMessage;
+import explorer.ExplorerStateIdle;
 
 public abstract class WarExplorerBrainController extends WarExplorerBrain
 {

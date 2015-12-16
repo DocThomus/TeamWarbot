@@ -40,6 +40,8 @@ public class BaseStateKing extends State
 	
 	public void update()
 	{
+		int nbScoutsAffectes = 0;
+		int nbFarmersAffectes = 0;
 		for(WarMessage m : brain.mailbox)
 		{
 			if(m.getMessage() == "Who's the King ?") {
@@ -60,11 +62,13 @@ public class BaseStateKing extends State
 				}
 				enemyBases.put(Integer.parseInt(m.getContent()[0]), c);
 			} else if (m.getMessage() == "What is my role ?") {
-				//TODO A équilibrer, faire des tests.
-				if (this.nbExplorerScouts == 0) {
+				//TODO A ï¿½quilibrer, faire des tests.
+				if (this.nbExplorerScouts + nbScoutsAffectes == 0 || this.nbExplorerFarmers + nbFarmersAffectes  > 4) {
 					brain.sendMessage(m.getSenderID(), "Your role is scouting", "");
+					nbScoutsAffectes++;
 				} else {
 					brain.sendMessage(m.getSenderID(), "Your role is farming", "");
+					nbFarmersAffectes++;
 				}
 			} else if (m.getMessage() == "OK, I am farmer") {
 				this.nbExplorerFarmers++;
