@@ -26,7 +26,7 @@ public class BaseStateKing extends State
 	public String execute()
 	{
 		reflexe();
-		wbbc.setDebugString("I'm the King !!" + wbbc.myRoles("bases").toString());
+		wbbc.setDebugString("I'm the King !!" + enemyBases.toString());
 		return WarBase.ACTION_IDLE;
 	}
 	
