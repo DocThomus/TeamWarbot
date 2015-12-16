@@ -5,9 +5,9 @@ import edu.warbot.brains.capacities.Movable;
 
 public abstract class MovableAgentState extends State
 {
-	public MovableAgentState(Fsm fsm, WarBrain wb)
+	public MovableAgentState(Fsm fsm, WarBrain brain)
 	{
-		super(fsm, wb);
+		super(fsm, brain);
 	}
 	
 	public void reflexe()

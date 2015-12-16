@@ -19,7 +19,7 @@ public class BaseStateElection extends State
 	
 	public String execute()
 	{
-		reflexe();
+		brain.setDebugString("Election");
 		return WarBase.ACTION_IDLE;
 	}
 	
@@ -29,14 +29,14 @@ public class BaseStateElection extends State
 		if(brain.myRoles("bases").contains("manager"))
 		{
 			fsm.pop();
-			fsm.push(new BaseStateKing(fsm, brain));
+			fsm.push(new BaseStateKing(fsm, (WarBaseBrainController) brain));
 			brain.broadcastMessageToAll("I'm the King !!", "");
 			return;
 		}
 		else
 		{
 			fsm.pop();
-			fsm.push(new BaseStateIdle(fsm, brain));
+			fsm.push(new BaseStateIdle(fsm, (WarBaseBrainController) brain));
 			return;
 		}
 	}

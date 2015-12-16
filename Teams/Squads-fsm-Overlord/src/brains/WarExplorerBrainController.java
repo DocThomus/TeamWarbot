@@ -26,7 +26,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain
     @Override
     public String action()
     {
-    	update();
+    	this.update();
         return fsm.execute();
     }
     
