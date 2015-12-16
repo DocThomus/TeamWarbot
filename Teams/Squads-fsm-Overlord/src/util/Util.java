@@ -12,7 +12,7 @@ public final class Util {
 			p = percepts.get(0);
 			double distance = p.getDistance();
 			for(int i = 1; i < percepts.size(); i++) {
-				if (distance < percepts.get(i).getDistance()) {
+				if (percepts.get(i).getDistance() < distance) {
 					p = percepts.get(i);
 				}
 			}

@@ -19,13 +19,13 @@ public class BaseStateElection extends State
 	
 	public String execute()
 	{
-		brain.setDebugString("Election");
+		//brain.setDebugString("Election");
 		return WarBase.ACTION_IDLE;
 	}
 	
 	public void reflexe()
 	{
-		update();
+		this.update();
 		if(brain.myRoles("bases").contains("manager"))
 		{
 			fsm.pop();

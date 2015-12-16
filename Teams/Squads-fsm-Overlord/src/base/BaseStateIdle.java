@@ -17,7 +17,7 @@ public class BaseStateIdle extends State
 	
 	public String execute()
 	{
-		brain.setDebugString("Idle");
+		//brain.setDebugString("Idle");
 		return WarBase.ACTION_IDLE;
 	}
 	

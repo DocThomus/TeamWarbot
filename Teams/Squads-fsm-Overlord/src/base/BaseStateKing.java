@@ -16,8 +16,7 @@ public class BaseStateKing extends State
 	public int nbExplorerScouts;
 	public int nbExplorerFarmers;
 	
-	public BaseStateKing(Fsm fsm, WarBaseBrainController brain)
-	{
+	public BaseStateKing(Fsm fsm, WarBaseBrainController brain) {
 		super(fsm, brain);
 		this.brain = brain;
 		
@@ -26,22 +25,18 @@ public class BaseStateKing extends State
 		this.nbExplorerScouts = 0;
 	}
 	
-	public String execute()
-	{
-		brain.setDebugString("I'm the King !!");
+	public String execute() {
+		//brain.setDebugString("I'm the King !!");
 		brain.broadcastMessageToAll("I'm the King !!");
 		return WarBase.ACTION_IDLE;
 	}
 	
-	public void reflexe()
-	{
+	public void reflexe() {
 		update();
 	}
 	
-	public void update()
-	{
+	public void update() {
 		int nbScoutsAffectes = 0;
-		int nbFarmersAffectes = 0;
 		for(WarMessage m : brain.mailbox)
 		{
 			if(m.getMessage() == "Who's the King ?") {
@@ -63,18 +58,16 @@ public class BaseStateKing extends State
 				enemyBases.put(Integer.parseInt(m.getContent()[0]), c);
 			} else if (m.getMessage() == "What is my role ?") {
 				//TODO A �quilibrer, faire des tests.
-				if (this.nbExplorerScouts + nbScoutsAffectes == 0 || this.nbExplorerFarmers + nbFarmersAffectes  > 4) {
+				if (this.nbExplorerScouts + nbScoutsAffectes == 0) {
 					brain.sendMessage(m.getSenderID(), "Your role is scouting", "");
-					nbScoutsAffectes++;
 				} else {
 					brain.sendMessage(m.getSenderID(), "Your role is farming", "");
-					nbFarmersAffectes++;
 				}
-			} else if (m.getMessage() == "OK, I am farmer") {
+			} /*else if (m.getMessage() == "OK, I am farmer") {
 				this.nbExplorerFarmers++;
 			} else if (m.getMessage() == "OK, I am scout") {
 				this.nbExplorerScouts++;
-			}
+			}*/
 		}
 	}
 }

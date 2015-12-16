@@ -17,7 +17,7 @@ public class ExplorerStateBringFood extends State
 	
 	public String execute()
 	{
-		brain.setDebugString("StateBringFood");
+		brain.setDebugString("bringFood");
 		return WarExplorer.ACTION_IDLE;
 	}
 	

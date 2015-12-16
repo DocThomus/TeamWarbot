@@ -17,7 +17,7 @@ public class ExplorerStateScout extends State
 
 	public String execute()
 	{
-		brain.setDebugString("StateScout");
+		brain.setDebugString("Scout");
 		return WarExplorer.ACTION_IDLE;
 	}
 	
