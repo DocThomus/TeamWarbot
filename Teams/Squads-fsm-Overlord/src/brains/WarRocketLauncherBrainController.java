@@ -21,6 +21,8 @@ public abstract class WarRocketLauncherBrainController extends WarRocketLauncher
 	public double angleEnemyUnit;
 	public double distanceEnemyBase;
 	public double angleEnemyBase;
+	public double distanceRLAllielePlusProche;
+	public double angleRLAllieLePlusProche;
 
     public WarRocketLauncherBrainController() {
         super();
